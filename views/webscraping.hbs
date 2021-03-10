@@ -1,0 +1,86 @@
+
+<div>
+  <h1 style="display: flex; justify-content: center">NLP Webapp</h1>
+  <br>
+  <br>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Functionalities:</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul style="display: flex; justify-content: space-around"class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/merge_datasets">Merge Scraped Data </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/sentiment_score">Assign Sentiment Score to Comments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/comment_view">View Positive/Negative Comments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/nps_output">Get NPS Score <span class="sr-only">(current)</span> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/training">Train NLP Model</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/webscraping">Webscraping</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+<h2 class="subtitle"> How to use the webscraping tool</h2>
+<br>
+<div class="container">
+  <p style="display: flex; justify-content: center; font-size: 20px"> Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+    Instructions for how to use the NPS functionality
+  </p>
+</div>
+<br>
+<br>
+<h2 class="subtitle">Webscraping inputs</h2>
+
+<form method="POST" style="width: 70%; margin-left: auto; margin-right: auto"
+action='http://localhost:3000/webscraping'
+encType="multipart/form-data"
+>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Platform:</label>
+    <select name="platform_name" class="form-control">
+      <option>JD.com</option>
+      <option>JD.com Global</option>
+      <option>Tmall</option>
+      <option>Tmall Global</option>
+      <option>Taobao</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">URL (must be link to the comments ideally)</label>
+    <input name="scraping_url" type="text" class="form-control" id="formGroupExampleInput" placeholder="https://item.jd.com/100017641792.html#comment">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Product Name</label>
+    <input name="product_name" type="text" class="form-control" id="formGroupExampleInput"
+    placeholder="Sleep">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Dataset Name</label>
+    <input name="dataset_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Buffx_Sleep">
+  </div>
+  <button type="submit" class="btn btn-primary">Get NPS output(s)</button>
+</form>

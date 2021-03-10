@@ -1,0 +1,21 @@
+{
+  "name": "ince-nlpwebscrape-webapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "apify": "^1.0.2",
+    "busboy": "^0.3.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-fileupload": "^1.2.1",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "puppeteer": "^8.0.0",
+    "python-shell": "^2.0.3"
+  }
+}
