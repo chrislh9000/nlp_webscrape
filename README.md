@@ -102,6 +102,39 @@ The sentiment analysis model is already trained with tens of thousands of e-comm
 Finally to arrive at an easily comparable and interpretable metric, we can create an NPS (net promoter score)
                           for different products and different aspects of each product
                           
-For the purposes of this analysis, the NPS score = % of positive comments - % of negative comments                     
+For the purposes of this analysis, the **NPS score = % of positive comments - % of negative comments** 
+
+A positive comment has a sentiment score of above 0.8 while a negative comment has a sentiment score of below 0.3 (these thresholds can be tweaked/modified)
+
+Finally, we can also arrive at a weighted nps by multiplying a category’s NPS score by the proportion of total analysed comments that belong to that category
+
+##### Sidenote: Interpretability of NPS scores from the ScraperNLP app
+
+NPS score is typically on its own a good metric for judging customer attitudes
+(ie. you know an NPS score above 50 means the product/service is generally really well received).
+
+However these NPS responses are usually collected via
+surveys that represent a pretty wholistic distribution of the entire population (consumer base).
+                              
+When analyzing Taobao and JD.com 评论, the wholistic distribution of the
+population is not exactly well represented. The comments and ratings are positively skewed, and people who take the time to comment probably feel strong compulsion to do so, so their reviews may not be representative of the entire consumer base. In short, there is selection bias.  
+
+I realize there is selection bias, which means these scores are not an accurate representation of what the whole consumer demographic feels.
+That being said, we can assume that all products on Tmall and JD share a similar biased effect, meaning we can use this score as a relative metric to better understand how one product compares to another product.
+
+## 3) Next Steps
+
+Some next steps for how to improve this app could include:
+
+1. Ability to train the NLP sentiment model from the Webapp 
+2. Additional NLP functionality
+3. Visualizations and Analytics UI
+4. Consolidate the webscraping to nps entire process into something more seamless
+                            
+                         
+                            
+                            
+
+
 
 
