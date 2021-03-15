@@ -196,7 +196,7 @@ def product_sentiment(df, keywords, product_names):
     for ind in range(len(product_names)):
         # filter out by products aand push to the df_product_outputs array
         product_df = df[df['product'] == product_names[ind]]
-        product_df = product_df.reset_index()
+        # product_df = product_df.reset_index()
         print("number of comments matching product " + product_names[ind] + ': ' + str(len(product_df.index)))
         df_product_outputs[product_names[ind]] = product_df
     return df_product_outputs

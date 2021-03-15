@@ -11,7 +11,7 @@ module.exports = {
       // proxyUrl: 'http://user:password@some.proxy.com'
       // Native Puppeteer options
       launchOptions: {
-          headless: true,
+          headless: false,
           args: ['--some-flag'],
       }
   },

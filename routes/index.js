@@ -72,7 +72,7 @@ router.post('/sentiment_score', (req, response, next) => {
       mode: 'text',
       pythonPath: '/Users/chemm/.pyenv/versions/3.7.3/bin/python3.7',
       pythonOptions: ['-u'], // get print results in real-time
-      scriptPath: '/Users/chemm/ince_nlpwebscrape_webapp/python', //If you are having python_test.py script in same folder, then it's optional.
+      scriptPath: `${__dirname}/../python`, //If you are having python_test.py script in same folder, then it's optional.
       args: ['sentiment', uploadPath, req.body.scoring_type, req.body.segment_keywords, req.body.segment_names] //An argument which can be accessed in the script using sys.argv[1]
     };
 
@@ -118,6 +118,7 @@ router.get('/nps_output', (req, response, next) => {
 })
 
 router.post('/nps_output', (req, response, next) => {
+  console.log("CHANGES WORK=====")
   let file;
   let uploadPath;
   // check to make sure the file thing isn't empty
@@ -126,7 +127,7 @@ router.post('/nps_output', (req, response, next) => {
   }
   // upload the file somewhere on the server
   dataset = req.files.input_dataset;
-  console.log(__dirname + '/../tempdata' + dataset.name)
+  console.log(__dirname + '/../tempdata/' + dataset.name)
   uploadPath = __dirname + '/../tempdata/' + dataset.name;
   // upload the data to the temp data folder
   dataset.mv(uploadPath, (err) => {
@@ -137,7 +138,7 @@ router.post('/nps_output', (req, response, next) => {
       mode: 'text',
       pythonPath: '/Users/chemm/.pyenv/versions/3.7.3/bin/python3.7',
       pythonOptions: ['-u'], // get print results in real-time
-      scriptPath: '/Users/chemm/ince_nlpwebscrape_webapp/python', //If you are having python_test.py script in same folder, then it's optional.
+      scriptPath: `${__dirname}/../python`, //If you are having python_test.py script in same folder, then it's optional.
       args: ['nlp', uploadPath, req.body.scoring_type, req.body.category_keywords, req.body.segment_names] //An argument which can be accessed in the script using sys.argv[1]
     };
 
@@ -202,7 +203,7 @@ router.post('/comment_view', (req, response, next) => {
       mode: 'text',
       pythonPath: '/Users/chemm/.pyenv/versions/3.7.3/bin/python3.7',
       pythonOptions: ['-u'], // get print results in real-time
-      scriptPath: '/Users/chemm/ince_nlpwebscrape_webapp/python', //If you are having python_test.py script in same folder, then it's optional.
+      scriptPath: `${__dirname}/../python`, //If you are having python_test.py script in same folder, then it's optional.
       args: ['print_comments', uploadPath, req.body.ranking_type] //An argument which can be accessed in the script using sys.argv[1]
     };
 
@@ -317,7 +318,7 @@ router.post('/webscraping', (req, response, next) => {
       mode: 'text',
       pythonPath: '/Users/chemm/.pyenv/versions/3.7.3/bin/python3.7',
       pythonOptions: ['-u'], // get print results in real-time
-      scriptPath: '/Users/chemm/ince_nlpwebscrape_webapp/python', //If you are having python_test.py script in same folder, then it's optional.
+      scriptPath: `${__dirname}/../python`, //If you are having python_test.py script in same folder, then it's optional.
       args: ['webscrape_download', uploadPath, req.body.product_name] //An argument which can be accessed in the script using sys.argv[1...n]
     };
 

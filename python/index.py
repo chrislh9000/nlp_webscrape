@@ -42,7 +42,6 @@ if opt == 'nlp':
         for i in category_split:
             temp_arr = np.array(re.split(',|, ', i))
             keywords_arr.append(temp_arr)
-        keywords_array = [price_keywords, expiration_keywords]
         nlp.nps_breakdown(sys.argv[2], 'category', keywords_arr, category_names)
 #===== downloads comments with sentiment scoring
 elif opt == 'sentiment':

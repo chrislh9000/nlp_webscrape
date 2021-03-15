@@ -1,6 +1,6 @@
 
 <div>
-  <h1 style="display: flex; justify-content: center">NLP Webapp</h1>
+  <h1 style="display: flex; justify-content: center">ScrapingNLP Webapp</h1>
   <br>
   <br>
 </div>
@@ -15,41 +15,250 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/merge_datasets">Merge Scraped Data</a>
+        <a class="nav-link" href="/webscraping">Webscraping</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/sentiment_score">Assign Sentiment Score to Comments</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/comment_view">View Positive/Negative Comments</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="/nps_output">Get NPS Score</a>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="/comment_view">View Positive/Negative Comments</a>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="/training">Train NLP Model</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/webscraping">Webscraping</a>
       </li>
     </ul>
   </div>
 </nav>
 <br>
 <br>
-<div class="container">
-<p class="page_center"> Welcome to the NLP app homepage </p>
-</div>
-<h2 class="subtitle"> How to use this app</h2>
-<div class="container">
-<h3 class="subtitle"> The approach and sample output </h2>
-<p class="page_center"> How to use this </p>
-</div>
-<div class="container">
-<h3 class="subtitle"> Best Practices </h2>
-<p class="page_center"> How to use this </p>
-</div>
-<div class="container">
-<h3 class="subtitle"> Other resources </h2>
-<p class="page_center"> How to use this </p>
-</div>
+<!-- Intro and motivation text section -->
+<div class="text_section">
+  <h2 class="subtitle"> 1) Introduction and motivation </h2>
+  <br>
+  <div style="margin: 10px; padding: 10px;" class="container">
+    <p class="page_center"> Welcome to the Webscraping and NLP web application. Functionalities and structure of this app were developed with respect to and over the course of an engagement to assess
+      consumer attitudes towards a newly launched consumer products brand relative to its competitors. </p> <br>
+
+      <p class="page_center"> With newly launched products, sales data may be limited and product positioning/development might be in relatively early stages.
+        It’s useful to understand initial product perception and how the product is competing relative to similar and competing products
+      </p> <br>
+
+      <p class="page_center"> Product reviews on e-commerce sites like Amazon, Taobao, Tmall, and JD.com can be an insightful testing ground
+        that can inform product development, marketing and positioning initiatives
+      </p> <br>
+
+      <p class="page_center"> With that being said, this ScrapingNLP web app aims to aggregate comments about certain products from different e-commerce platforms and then
+        perform NLP analysis on these comments to extract meaningful insights about how different aspects of the product are regarded by customers
+      </p>
+    </div>
+    <br>
+  </div>
+  <!-- How it works text section -->
+  <div class="text_section">
+    <h2 class="subtitle"> 2) How it works </h2>
+    <br>
+    <div style="margin: 10px; padding: 10px;" class="container">
+      <p class="page_center"> At a high level, the ScrapeNLP app allows you to perform a three-step analysis process: </p>
+      <ol>
+        <li> Data collection and aggregation through web scraping </li>
+        <li> NLP text processing and sentiment analysis using a ML Naive Bayes model </li>
+        <li> NPS calculations to aggregate the results of the sentiment analysis and create a metric that can easily be interpreted and compared </li>
+      </ol>
+      <br>
+      <div class="image_container">
+        <img style="width: 40%; height: 40%" src="/images/ScrapeNLP flowchart.png">
+      </div>
+      <br>
+
+      <p class="page_center"> I designed this webapp to allow users to execute each of these three steps separately so that the fuctionality
+        can be used to perhaps suit different purposes </p>
+
+        <p class="page_center"> To execute this analysis process on the app we can do the following: </p>
+        <ol>
+          <li> Start at the 'Webscraping' page and get the comments data </li>
+          <li> Merge the scraped data into a ready-to-analyze-dataset we want to analyze </li>
+          <li> Perform the sentiment analysis in the 'Assign Sentiment Score to Comments' page
+            OR perform the sentiment analysis and NPS scoring together on the 'Get NPS Score' page </li>
+          </ol>
+
+        </div>
+        <br>
+        <div style="margin: 10px; padding: 10px;" class="container">
+          <h4 class="subtitle"> 2.1) Sample outputs from ScrapeNLP app </h4>
+          <br>
+          <p class="image_caption"> Weighted NPS analysis across different competing products: </p>
+          <div class="image_container">
+            <img class="doc_image" src="/images/sample_outputs/weighted_nps_comparison.png">
+          </div>
+          <br>
+          <p class="image_caption"> NPS analysis along different product dimensions: </p>
+          <div class="image_container">
+            <img class="doc_image" src="/images/sample_outputs/property_nps_breakdown.png">
+          </div>
+          <br>
+          <p class="image_caption"> NPS comparison across flavor: </p>
+          <div class="image_container">
+            <img class="doc_image" src="/images/sample_outputs/flavor_nps_comparison.png">
+          </div>
+        </div>
+        <br>
+        <div style="margin: 10px; padding: 10px;" class="container">
+          <!-- Step 1 block -->
+          <h4 class="subtitle"> Step 1: Webscraping </h4>
+          <br>
+          <p class="page_center"> The webscraper uses the Apify SDK which runs on Node.js (Javascript) </p>
+          <a href="https://sdk.apify.com/" class="page_center"> Link to Apify Documentation </a>
+          <a href="https://www.npmjs.com/package/apify" class="page_center"> Link to Apify Node.js Package </a>
+          <br>
+          <p class="page_center"> The app runs a Puppeteer Headless Chromium Browser Scraper through Apify </p> <br>
+          <p class="page_center"> A headless browser is a controllable web browser that just doesn’t have a gui
+            (you don’t see it running) but you can program it to do specific tasks very quickly and automatically  </p> <br>
+            <p class="page_center"> The scraper aggregates the comments into a large .json file (looks very cluttered) and this .json file is converted into table
+              format and stored/downloaded as a .csv file  </p> <br>
+              <p class="page_center"> The app runs a Puppeteer Headless Chromium Browser Scraper through Apify </p>
+              <p class="page_center"> A headless browser is a controllable web browser that just doesn’t have a gui (you don’t see it running)
+                but you can program it to do specific tasks very quickly and automatically  </p> <br>
+                <p class="page_center"> The scraper aggregates the comments into a large .json file
+                  and this .json file is converted into table format and stored/downloaded as a .csv file </p> <br>
+                  <p class="image_caption"> JSON file from the webscraper: </p>
+                  <div class="image_container">
+                    <img class="doc_image" src="/images/webscrape_images/webscrape_json.png">
+                  </div>
+                  <br>
+                  <p class="image_caption"> CSV file after processing: </p>
+                  <div class="image_container">
+                    <img class="doc_image" src="/images/webscrape_images/webscrape_csv.png">
+                  </div>
+                </div>
+                <div style="margin: 10px; padding: 10px;" class="container">
+                  <!-- Step 2 block -->
+                  <h4 class="subtitle"> Step 2: NLP comment categorization and sentiment analysis </h4>
+                  <br>
+                  <p class="page_center"> The goal of this step is to accurately analyze the sentiment for the comments we have scraped.
+                    However we want the sentiment analysis to be as specific as possible.
+                    What aspects about the product do customers like? What do they dislike?
+                    To motivate the need for segmentation a bit more, suppose a comment reads “The packaging is very well designed.
+                    It’s way too expensive. It tastes pretty average”. If we simply assigned a sentiment score to that entire comment,
+                    it would probably amount to something pretty average, and would not tell us a whole lot, but if we can break that
+                    comment down into three segments and perform sentiment analysis on three of them, we can determine the comment is positive about packaging,
+                    negative about price, and neutral/negative about taste. This gives us a lot more information than if we just perform the sentiment analysis in aggregate </p> <br>
+
+                    <h5 class="subtitle"> Substep 1: comment categorization </h5>
+
+                    <ol>
+                      <li> Assign keywords to each category </li>
+                      <li> Identify and aggregate the sentences/phrases that contain these keywords for each comment </li>
+                    </ol>
+                    <br>
+                    <br>
+                    <p class="image_caption"> Text filtered by category keywords: </p>
+                    <div class="image_container">
+                      <img class="doc_image" src="/images/flavor_example/price_keywords.png">
+                    </div>
+
+                    <h5 class="subtitle"> Substep 2: sentiment analysis </h5>
+                    <p class="page_center"> Next, the app uses an NLP sentiment analysis model to assign a sentiment score to the categorized text
+                      The score ranges from 0 (negative) to 1 (positive)  </p> <br>
+                      <p class="page_center"> The model used for sentiment analysis is a Naive Bayes model from the SnowNLP python library -- an NLP library that has been trained and optimized for Chinese NLP
+                      </p> <br>
+                      <a href="https://github.com/isnowfy/snownlp" class="page_center"> SnowNLP Link </a>
+                      <a href="https://www.programmersought.com/article/25894599744/" class="page_center"> In-depth discussion of SnowNLP implementation of sentiment analysis </a>
+                      <br>
+
+                      <h5 class="subtitle"> Sidenote: training the sentiment analysis model </h5>
+                      <p class="page_center"> The sentiment analysis model is already trained with tens of thousands of e-commerce site comments, but it might not be familiar with specific aspects or vocabulary associated with certain categories. Before performing the analysis
+                        it might be necessary to train the model by giving it examples of positive comments and negative comments.  </p> <br>
+                        <p class="page_center"> The training data ideally must not be data that will end up being used in the sentiment analysis that you do later on!
+                        </p> <br>
+                        <br>
+                      </div>
+                      <!-- Step 3 block -->
+                      <div style="margin: 10px; padding: 10px;" class="container">
+                        <h4 class="subtitle"> Step 3: NPS calculations and output generation </h4>
+                        <br>
+                        <p class="page_center"> Finally to arrive at a comparable and interpretable metric, we can create an NPS (net promoter score)
+                          for different products and different aspects of each product.  </p> <br>
+
+                          <p class="page_center"> For the purposes of this analysis, the  <span style="font-weight:bold; margin-left:0.25em">  NPS score = % of positive comments - % of negative comments </span>  </p> <br>
+
+                          <p class="page_center"> A positive comment has a sentiment score of above 0.8 while a negative comment has a sentiment score of below 0.3 (these thresholds can be tweaked/modified)</p> <br>
+                          <p class="page_center"> Finally, we can also arrive at a weighted nps by multiplying a category’s NPS score by the proportion of total analysed comments that belong to that category</p> <br>
+                        </div>
+                        <!-- Sidenote block -->
+                        <div style="margin: 10px; padding: 10px;" class="container">
+                          <h4 class="subtitle"> Sidenote: Interpretability of NPS scores from the ScraperNLP app </h4>
+                          <br>
+                          <p class="page_center"> NPS score is typically on its own a good metric for judging customer attitudes
+                            (ie. you know an NPS score above 50 means the product/service is generally really well received)  </p> <br>
+
+                            <p class="page_center"> However these NPS responses are usually collected via
+                              surveys that represent a pretty wholistic distribution of the entire population (consumer base)  </p> <br>
+
+                              <p class="page_center"> When analyzing Taobao and JD.com 评论, the wholistic distribution of the
+                                population is not exactly well represented. The comments and ratings are positively skewed, and people who take the time to comment probably
+                                feel strong compulsion to do so, so their reviews may not be representative of the entire consumer base. In short, there is selection bias.  </p> <br>
+
+                                <p class="page_center"> I realize there is selection bias, which means these scores are not an accurate representation of what the whole consumer demographic feels.
+                                  That being said, we can assume that all products on Tmall and JD share a similar biased effect, meaning we can use this score as a relative metric to better understand how one product compares to another product
+                                </p> <br>
+
+                                <p class="page_center"> For the purposes of this analysis, the  <span style="font-weight:bold; margin-left:0.25em">  NPS score = % of positive comments - % of negative comments </span>  </p> <br>
+
+                                <p class="page_center"> A positive comment has a sentiment score of above 0.8 while a negative comment has a sentiment score of below 0.3 (these thresholds can be tweaked/modified)</p> <br>
+                                <p class="page_center"> Finally, we can also arrive at a weighted nps by multiplying a category’s NPS score by the proportion of total analysed comments that belong to that category</p> <br>
+                              </div>
+                            </div>
+
+                            <!-- How to access/use and modify-->
+                            <div class="text_section">
+                              <h2 class="subtitle"> 3) Access and modification </h2>
+
+                              <div style="margin: 10px; padding: 10px;" class="container">
+                                <p class="page_center"> The ScrapeNLP app ideally can be used online from your web browser (although it is a bit buggy right now) </p> <br>
+                                <a href="https://webscraping-nlp.herokuapp.com/ " class="page_center"> Link to Website </a>
+                                <p class="page_center"> The ScrapeNLP app can also be downloaded and run locally.
+                                  The code is on my github so you can look at specifics if you are curious. You will need to install software to run it locally however,
+                                  including Node.js, node package manager (npm), Express.js, python, and some python packages </p> <br>
+                                  <a href="https://github.com/chrislh9000/nlp_webscrape" class="page_center"> Github Link </a>
+                                </div>
+                                <br>
+                              </div>
+
+                              <!-- Next steps text section -->
+                              <div class="text_section">
+                                <h2 class="subtitle"> 4) Next Steps </h2>
+                                <div style="margin: 10px; padding: 10px;" class="container">
+                                  <p class="page_center"> Some next steps for how to improve this app could include: </p> <br>
+                                  <ul>
+                                    <li> Adding more reliable scraping functionality for Tmall and Taobao (Antiscraping is still a big problem) </li>
+                                    <li> Ability to train the NLP sentiment model from the Webapp </li>
+                                    <li> Additional NLP functionality </li>
+                                    <li> Visualizations and Analytics UI </li>
+                                    <li> Consolidate the whole process into something more seamless </li>
+                                  </ul>
+                                </div>
+                                <br>
+                              </div>
+
+                              <!-- Additional resources text section -->
+                              <div class="text_section">
+                                <h2 class="subtitle"> 5) Additional Resources </h2>
+                                <div style="margin: 10px; padding: 10px;" class="container">
+                                  <p class="page_center"> Here are some other products and services that could also help do similar things: </p> <br>
+                                  <a href="https://www.taosj.com/" class="page_center"> 陶数据: </a>
+                                </div>
+                                <br>
+                                <p class="image_caption"> Similar comment NLP analysis: </p>
+                                <div class="image_container">
+                                  <img class="doc_image" src="/images/tsj/tsj_similar.png">
+                                </div>
+
+                                <p class="image_caption"> More macro and business analytics as well: </p>
+                                <div class="image_container">
+                                  <img class="doc_image" src="/images/tsj/macro_level.png">
+                                </div>
+                                <br>
+                              </div>

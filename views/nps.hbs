@@ -10,53 +10,66 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul style="display: flex; justify-content: space-around"class="navbar-nav">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/merge_datasets">Merge Scraped Data </a>
+        <a class="nav-link" href="/webscraping">Webscraping</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/sentiment_score">Assign Sentiment Score to Comments</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/comment_view">View Positive/Negative Comments</a>
-      </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/nps_output">Get NPS Score <span class="sr-only">(current)</span> </a>
+        <a class="nav-link" href="/nps_output">Get NPS Score</a>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="/comment_view">View Positive/Negative Comments</a>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="/training">Train NLP Model</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/webscraping">Webscraping</a>
       </li>
     </ul>
   </div>
 </nav>
 <br>
 <br>
-<h2 class="subtitle"> How to use this nps analysis</h2>
+<h1 class="subtitle"> Step 3): NPS Scoring Tool </h1>
 <br>
-<div class="container">
-  <p style="display: flex; justify-content: center; font-size: 20px"> Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-    Instructions for how to use the NPS functionality
-  </p>
-</div>
+<div class="text_section">
+  <h2 class="subtitle"> How to use the nps scoring tool </h2>
+  <br>
+  <div style="margin: 10px; padding: 10px;" class="container">
+    <p class="page_center"> The nps scoring tool takes a given webscraping csv output dataset, assigns sentiment scores an overall,
+    category, or product-based sentiment score to all the comments, and then calculates the nps scores for
+    these specific segments. The output is category/product count, weight (if applicable) and the corresponding nps score </p> <br>
+
+      <p class="page_center"> All you need to do is upload the scraped comments dataset, and input the name of the dataset when you download it, category/product keywords,
+        if category or product option are selceted, and then the category and product name if category or product options are selected
+      </p> <br>
+
+      <p class="image_caption"> Sample dataset input: </p>
+      <div class="image_container">
+        <img class="doc_image" src="/images/sample_inputs/sentiment_score_input_df.png">
+      </div>
+      <br>
+      <p class="image_caption"> Sample nps scoring input for category: </p>
+      <div class="image_container">
+        <img class="doc_image" src="/images/sample_inputs/nps_score_input_category2.png">
+      </div>
+
+      <p class="image_caption"> Sample nps scoring input for product: </p>
+      <div class="image_container">
+        <img class="doc_image" src="/images/sample_inputs/nps_score_input_product.png">
+      </div>
+    </div>
+    <br>
+  </div>
 <br>
 <br>
 <h2 class="subtitle">NPS scoring inputs</h2>
 
-<form method="POST" style="width: 70%; margin-left: auto; margin-right: auto"
-action='http://localhost:3000/nps_output'
+<form method="POST" style="width: 70%;"
 encType="multipart/form-data"
 >
   <div class="form-group">
